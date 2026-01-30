@@ -4,8 +4,8 @@
     settings = {
       init.defaultBranch = "main";
       user = {
-        name = "Juan A.";
-        email = "adrephos@gmail.com";
+        name = "vaz";
+        email = "nicovalmu2003@gmail.com";
       };
     };
   };
