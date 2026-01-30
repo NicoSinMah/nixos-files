@@ -42,7 +42,7 @@ in
       name = "catppuccin-mocha-dark-cursors";
       size = 16;
     };
-    username = lib.mkDefault "gleipnir";
+    username = lib.mkDefault "vaz";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
     stateVersion = "23.11";
     sessionVariables = {

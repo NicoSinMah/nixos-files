@@ -1,5 +1,5 @@
 { pkgs, config, ... }: {
-  users.users.gleipnir = {
+  users.users.vaz = {
     isNormalUser = true;
     description = "ヴァイオレット・エヴァーガーデン";
     extraGroups = [ "networkmanager" "wheel" "docker" "adbusers" ];
@@ -10,5 +10,5 @@
 
   users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
 
-  home-manager.users.gleipnir = import ../../../../../home/gleipnir/${config.networking.hostName}.nix;
+  home-manager.users.vaz = import ../../../../../home/gleipnir/${config.networking.hostName}.nix;
 }

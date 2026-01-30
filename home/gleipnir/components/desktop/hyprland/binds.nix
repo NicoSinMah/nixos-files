@@ -24,6 +24,7 @@
         "SUPER SHIFT, V, exec, $clipboard"
         "CTRL ALT, F, exec, $filemanager"
         "CTRL SHIFT, Escape, exec, $resourcemonitor"
+        "SUPER, T, exec, $show_time"
 
         "SUPER SHIFT, G, pin"
 

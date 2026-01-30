@@ -55,36 +55,6 @@ in
   };
 
   services = {
-    syncthing = {
-      enable = true;
-      user = "gleipnir";
-      dataDir = "/home/gleipnir/.config/syncthing";
-      configDir = "/home/gleipnir/.config/syncthing";
-      openDefaultPorts = true;
-      overrideDevices = true;
-      overrideFolders = true;
-      guiPasswordFile = "/home/gleipnir/secrets/syncthing/passwd";
-      settings = {
-        gui = {
-          user = "adrephos";
-        };
-        devices = {
-          "phone" = {
-            id = "TCD5MAE-PBCM7VY-YOANEUL-CCQJBCG-2HUKBAI-JTXQING-F5H4COG-QY7IPQO";
-          };
-        };
-        folders = {
-          "Notes" = {
-            path = "/home/gleipnir/workspace/obsidian";
-            devices = [ "phone" ];
-          };
-          "Pictures" = {
-            path = "/run/media/gleipnir/IDK/Pictures";
-            devices = [ "phone" ];
-          };
-        };
-      };
-    };
     blueman.enable = true;
     gnome.gnome-keyring.enable = true;
     pulseaudio.enable = false;
@@ -272,8 +242,8 @@ in
     gpu-screen-recorder
 
     # owasp
-    zap
-    burpsuite
+    # zap
+    # burpsuite
 
     # Learning
     exercism
@@ -292,7 +262,7 @@ in
     python311Packages.pip
 
     # La vida
-    stremio
+    # stremio
     discord
     tidal-hifi
     pulseaudio

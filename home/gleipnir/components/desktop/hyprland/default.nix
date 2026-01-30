@@ -125,6 +125,7 @@
       "$terminal" = "kitty";
       "$filemanager" = "kitty -e fish -c yazi";
       "$resourcemonitor" = ''kitty --class="com.adrephos.floating" -e btop'';
+      "$show_time" = "notify-send \"$(date '+%B %d %Y')\" \"$(date '+%A, %H:%M:%S')\" -a \"Date & Time\"";
       "$menu" = "rofi -show drun -icon-theme Papirus -show-icons";
       "$sshot_region" = ''grim -g "$(slurp -d)" - | wl-copy -t image/png'';
       "$sshot_monitor" = "hyprshot -m output --freeze";
