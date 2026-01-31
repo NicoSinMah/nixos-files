@@ -42,27 +42,13 @@ in
       fish_hybrid_key_bindings
 
       function handle_directory_change --on-variable PWD
-        set git_root (git rev-parse --show-toplevel 2>/dev/null)
-        set revaisor_dir "/home/${config.home.username}/workspace/github.com/revaisor"
-
-        if test -n "$git_root"
-          if string match -r "^"$revaisor_dir"(/.*|\$)" $PWD
-            if not ssh-add -l | grep -q revaisor
-                ssh-add ~/secrets/ssh/revaisorkey
+          git rev-parse 2>/dev/null
+          if test $status -eq 0
+            if not ssh-add -l | grep -q nicovalmu2003
+              ssh-add ~/secrets/ssh/id_ed25519
             end
-            git config user.email "juanesteban@revaisor.com"
-          else if not ssh-add -l | grep -q adrephos
-            ssh-add ~/secrets/ssh/id_ed25519
+            onefetch -d dependencies authors contributors license -i /home/${config.home.username}/Downloads/fondogithub.jpeg --image-protocol kitty
           end
-          # This is the corrected line from before
-          if test "$git_root" != "$last_git_root" && [ -z "$ZELLIJ" ]
-            clear
-            onefetch -d dependencies authors contributors license -i /home/${config.home.username}/Pictures/onefetch/marcille.png --image-protocol kitty
-            set -g last_git_root "$git_root"
-          end
-        else
-          set -g last_git_root ""
-        end
       end
 
       zoxide init --cmd cd fish | source
