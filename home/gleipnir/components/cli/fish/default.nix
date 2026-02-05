@@ -47,7 +47,7 @@ in
             if not ssh-add -l | grep -q nicovalmu2003
               ssh-add ~/secrets/ssh/id_ed25519
             end
-            onefetch -d dependencies authors contributors license -i /home/${config.home.username}/Downloads/fondogithub.jpeg --image-protocol kitty
+            onefetch -d dependencies authors contributors license -i /home/${config.home.username}/Downloads/Wallpaper/1rawea.png --image-protocol kitty
           end
       end
 
