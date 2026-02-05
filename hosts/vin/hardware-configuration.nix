@@ -34,9 +34,10 @@
     device = "/dev/disk/by-label/NIXBOOT";
     fsType = "vfat";
   };
+
   fileSystems."/home/vaz/discoD" = {
-    device = "/dev/disk/by-uuid/2446B22946B1FC1C";
-    fsType = "ntfs";
+    device = "/dev/disk/by-label/discod";
+    fsType = "ext4";
   };
 
   swapDevices = [

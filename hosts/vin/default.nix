@@ -18,7 +18,7 @@ in
     ./hardware-configuration.nix
     ./common/users/gleipnir
     ./common/generic
-
+    ./common/generic/nbfc.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -55,6 +55,18 @@ in
   };
 
   services = {
+    postgresql = {
+      enable = true;
+      package = pkgs.postgresql_16;
+      enableTCPIP = true;
+      settings = { 
+        listen_addresses = "*"; 
+        };
+      authentication = pkgs.lib.mkOverride 10 ''
+        local all  all                 trust
+        host  all  all  127.0.0.1/32   trust
+        '';
+      };
     blueman.enable = true;
     gnome.gnome-keyring.enable = true;
     pulseaudio.enable = false;
@@ -86,6 +98,7 @@ in
   };
 
   programs = {
+    coolercontrol.enable = true;
     command-not-found.enable = true;
     dconf.enable = true;
     hyprland.enable = true;

@@ -28,6 +28,10 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     templ.url = "github:a-h/templ";
 
+    nbfc-linux = {
+     url = "github:nbfc-linux/nbfc-linux";
+     inputs.nixpkgs.follows = "nixpkgs";
+     };
     zen-browser.url = "github:youwen5/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
