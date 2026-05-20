@@ -291,7 +291,7 @@ in
     prismlauncher
     r2modman
     # osu-lazer
-    protonvpn-gui
+    proton-vpn
     anydesk
 
     # Wine & Gaming

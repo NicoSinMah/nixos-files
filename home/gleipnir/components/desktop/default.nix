@@ -12,7 +12,7 @@
     libnotify
     # rofi
     networkmanagerapplet
-    youtube-music
+    pear-desktop
     brave
     # firefox
     playerctl
