@@ -18,15 +18,14 @@ in
     ./hardware-configuration.nix
     ./common/users/gleipnir
     ./common/generic
-    ./common/generic/nbfc.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
   home-manager.extraSpecialArgs = { inherit inputs outputs; };
 
   # Hibernation
-  boot.kernelParams = [ "resume=/dev/disk/by-label/swap" ];
-  boot.resumeDevice = "/dev/disk/by-label/swap";
+  # boot.kernelParams = [ "resume=/dev/disk/by-label/swap" ];
+  # boot.resumeDevice = "/dev/disk/by-label/swap";
   powerManagement.enable = true;
 
   services.logind.settings.Login = {
@@ -90,10 +89,6 @@ in
         extraPackages = with pkgs.kdePackages; [ qtmultimedia ];
       };
     };
-    asusd = {
-      enable = true;
-      enableUserService = true;
-    };
     power-profiles-daemon.enable = true;
   };
 
@@ -102,7 +97,6 @@ in
     command-not-found.enable = true;
     dconf.enable = true;
     hyprland.enable = true;
-    adb.enable = true;
     gamemode.enable = true;
     gamescope = {
       enable = true;
@@ -196,7 +190,11 @@ in
     "qtwebengine-5.15.19"
   ];
 
-  nixpkgs.overlays = [ inputs.templ.overlays.default ];
+  nixpkgs.overlays = [ inputs.templ.overlays.default (
+    final: prev: {
+    obs-localvocal = prev.callPackage ./overlays/obs-localvocal.nix { };
+    }
+  )];
 
   environment.homeBinInPath = true;
   environment.systemPackages = with pkgs; [
@@ -206,6 +204,7 @@ in
     jdk
     jdk11
     jdk21
+    jdk25
     maven
     gradle
 
@@ -219,6 +218,7 @@ in
     templ
     cobra-cli
 
+
     # Development
     gcc
     cmake
@@ -227,6 +227,9 @@ in
     simple-mtpfs
     gnumake
     linuxHeaders
+    android-tools
+    neovim
+    imagemagick
 
     # Tools
     caligula # iso image
@@ -243,7 +246,7 @@ in
     tree-sitter
     texlive.combined.scheme-full
     ghostscript
-    python311Packages.pylatexenc
+    python312Packages.pylatexenc
     nixfmt
     networkmanager-vpnc
     wg-netmanager
@@ -272,17 +275,24 @@ in
     nodejs
     uv
     python3
-    python311Packages.pip
+    python312Packages.pip
 
     # La vida
+    heroic
     # stremio
+    spotify
+    parsec-bin
     discord
+    vlc
+    discord-ptb
     tidal-hifi
     pulseaudio
     pavucontrol
     prismlauncher
+    r2modman
     # osu-lazer
     protonvpn-gui
+    anydesk
 
     # Wine & Gaming
     inputs.boosteroid.packages.x86_64-linux.boosteroid

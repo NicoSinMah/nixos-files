@@ -6,6 +6,7 @@
     ./waybar.nix
     ./hyprlock.nix
     ./wlogout.nix
+    ./windowrules.nix
   ];
 
   home = {
@@ -16,7 +17,7 @@
       hyprsunset
       wl-clipboard
       hyprsunset
-      swww
+      awww
       rofi
     ];
     sessionVariables = {
@@ -37,8 +38,8 @@
       monitor = [
         # "HDMI-A-1,1920x1080@144,0x0,1,cm,auto"
         # "eDP-1,1920x1080@144,1920x0,1,cm,auto"
-        "eDP-1,1920x1080@144,0x0,1,cm,auto"
-        "HDMI-A-1,1920x1080@144,1920x0,1,cm,auto"
+        "eDP-1,1920x1080@60,0x0,1,cm,auto"
+        "HDMI-A-1,1920x1080@120,1920x0,1,cm,auto"
       ];
 
       input = {
@@ -58,29 +59,11 @@
       workspace = [
         "special:terminal, border:false, on-created-empty:$terminal"
         "special:music,  on-created-empty:$music"
-        "special:magic, on-created-empty:anki"
-      ];
-
-      windowrulev2 = [
-        "minsize 1 1, class:^(steam)$"
-        "tile, class:^(steam)$"
-        "workspace 9 silent, class:^(steam)$"
-        "workspace 1 silent, class:^(discord)$"
-        "float, class:^(com.adrephos.floating)$"
-        "float, title:^(Picture-in-Picture)$"
-        "pin, title:^(Picture-in-Picture)$"
-        "float, title:.*Checker.Plus.for.Google.Calendar.*"
-        "float, title:Extension.*"
-        "size 1200 700, class:^(com.adrephos.floating)$"
-        "tile, class:^(.scrcpy-wrapped)$"
-        "idleinhibit fullscreen, class:^(Boosteroid)$"
-        "noanim, class:^(ueberzugpp).*$"
       ];
 
       exec-once = [
         "sh -c 'sleep 5; hyprctl reload; hyprsunset &'"
-        "sh -c 'swww-daemon --format xrgb & disown'"
-        # "sh -c 'swww img \"$(find ~/Pictures/Wallpaper/Current -type f \\( -iname \"*.jpg\" -o -iname \"*.png\" \\) | shuf -n 1)\" &'"
+        "sh -c 'awww-daemon --format xrgb & disown'"
         "sh -c 'wper &'"
 
         "sh -c 'xrandr --output HDMI-A-1 --primary &'"
@@ -100,6 +83,7 @@
         "sh -c 'sleep 10; start-gpu-recording &'"
         "sh -c 'sleep 5; profile &'"
         "sh -c 'sleep 10; temperature &'"
+        "sh -c 'sleep 10; monitor-change &'"
 
         "sh -c 'dbus-update-activation-environment --systemd HYPRLAND_INSTANCE_SIGNATURE &'"
         "sh -c 'sleep 10; rclone cmount gdrive:/ ~/drive/gdrive/ &'"
@@ -125,17 +109,17 @@
       "$terminal" = "kitty";
       "$filemanager" = "kitty -e fish -c yazi";
       "$resourcemonitor" = ''kitty --class="com.adrephos.floating" -e btop'';
-      "$show_time" = "notify-send \"$(date '+%B %d %Y')\" \"$(date '+%A, %H:%M:%S')\" -a \"Date & Time\"";
       "$menu" = "rofi -show drun -icon-theme Papirus -show-icons";
       "$sshot_region" = ''grim -g "$(slurp -d)" - | wl-copy -t image/png'';
       "$sshot_monitor" = "hyprshot -m output --freeze";
-      "$music" = "youtube-music";
-      # "$music" = "tidal-hifi";
+      "$music" = "pear-desktop";
       "$switchkbd" = "switch_kbd_locale";
       "$session" = "kitty session";
       "$toggle_bar" = "pkill -SIGUSR1 waybar";
       "$stop_replay" = "save-gpu-recording";
       "$clipboard" = ''kitty --class="com.adrephos.floating" -e clipse'';
+      "$show_time" =
+        ''notify-send "$(LC_TIME=ja_JP.UTF-8 date '+%Y年%m月%d日 (%a)')" "$(LC_TIME=ja_JP.UTF-8 date '+%H時%M分')" -a "日付と時刻"'';
     };
   };
 }
