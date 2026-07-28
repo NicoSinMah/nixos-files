@@ -19,6 +19,7 @@ in
     ./common/users/gleipnir
     ./common/generic
     inputs.home-manager.nixosModules.home-manager
+    inputs.boosteroid.nixosModules.default
   ];
 
   home-manager.extraSpecialArgs = { inherit inputs outputs; };
@@ -93,6 +94,15 @@ in
   };
 
   programs = {
+      boosteroid = {
+      enable = true;
+      videoDecoder = "vaapi";
+      extraEnv = {
+        LIBVA_DRIVER_NAME = "radeonsi";
+        LIBVA_DRIVERS_PATH = "/run/opengl-driver/lib/dri";
+        LD_LIBRARY_PATH = "/run/opengl-driver/lib";
+      };
+    };
     coolercontrol.enable = true;
     command-not-found.enable = true;
     dconf.enable = true;
@@ -264,7 +274,7 @@ in
     # Learning
     exercism
     mokuro
-    python312Packages.manga-ocr
+    python313Packages.manga-ocr
 
     # Erlang
     gleam
@@ -295,7 +305,7 @@ in
     anydesk
 
     # Wine & Gaming
-    inputs.boosteroid.packages.x86_64-linux.boosteroid
+
   ];
 
   system.autoUpgrade.enable = true;

@@ -36,7 +36,7 @@
   };
 
   fileSystems."/home/vaz/discoD" = {
-    device = "/dev/disk/by-label/discod";
+    device = "/dev/sda1";
     fsType = "ext4";
   };
 
