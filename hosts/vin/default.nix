@@ -6,6 +6,10 @@
 , ...
 }:
 let
+  unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.system;
+    config.allowUnfree = true;
+  };
   sddm-theme = pkgs.fetchFromGitHub {
     owner = "Keyitdev";
     repo = "sddm-astronaut-theme";
@@ -287,7 +291,7 @@ in
     python312Packages.pip
 
     # La vida
-    heroic
+    unstable.heroic
     # stremio
     spotify
     parsec-bin
@@ -298,7 +302,7 @@ in
     pulseaudio
     pavucontrol
     prismlauncher
-    r2modman
+    unstable.r2modman
     # osu-lazer
     proton-vpn
     anydesk
