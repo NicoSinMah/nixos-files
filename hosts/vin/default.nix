@@ -273,7 +273,6 @@ in
 
     # Learning
     exercism
-    mokuro
     python313Packages.manga-ocr
 
     # Erlang
