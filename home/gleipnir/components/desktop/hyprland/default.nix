@@ -100,6 +100,7 @@
         "GBM_BACKEND,nvidia-drm"
         "__GLX_VENDOR_LIBRARY_NAME,nvidia"
         "NVD_BACKEND,direct"
+        "WLR_NO_HARDWARE_CURSORS,1"
         # "ELECTRON_OZONE_PLATFORM_HINT,auto"
 
         "XDG_CURRENT_DESKTOP,Hyprland"

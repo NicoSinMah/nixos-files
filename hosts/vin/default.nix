@@ -244,6 +244,8 @@ in
     android-tools
     neovim
     imagemagick
+    codex
+    netlify-cli
 
     # Tools
     caligula # iso image
@@ -299,6 +301,7 @@ in
     vlc
     discord-ptb
     tidal-hifi
+    google-chrome
     pulseaudio
     pavucontrol
     prismlauncher
